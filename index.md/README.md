@@ -1,6 +1,6 @@
 # Mariam
 
-![Profile Picture](assets/Profile_logo/profile_pic.png)
+![Profile Picture](/assets/Profile_logo/profile_pic.png)
 
 ## About Me
 Hi, I'm Mariam! Welcome to my GitHub Pages site.
