@@ -5,4 +5,4 @@ channel names
 total subscribers
 total views
 total videos uploaded
-the source of the data is https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download
+Where is the data coming from? The data is sourced from Kaggle (an Excel extract), [see here to find it.](https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download)
