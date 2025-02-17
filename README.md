@@ -10,7 +10,7 @@ total views
 total videos uploaded
 The dataset of the project is from Kaggle (an Excel extract), [see here to find it.](https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download)
 # Stages of the project
-this involves design,development,testing,Analysis
+this involves design,development,testing,Analysis (I will be providing important snippets only)
 # Design
 Dashboard is composed of the 3 channels having the highest average views per video,Potential product sales per video which is average views per video times the conversion rate,potential revenue per video which is average views per video times product cost, finally net profit which is potential revenue per video minus campaign cost where each variable has 2 columns(excel in one column and sql in other column)
 Tools
@@ -48,6 +48,7 @@ steps required for data cleaning.1)extract channel names from first column(Nombr
 # Transfrom Data
 image below shows:1)selecting required columns.2)extracting channel names from Nombre Columns
 ![image](https://github.com/user-attachments/assets/6aaaf6ea-91d8-4936-b472-68bbb6a97b8f)
+
 2) ## Create the SQL view
 
 ```sql
@@ -69,6 +70,94 @@ SELECT
 
 -- 3.
 FROM top_uk_youtubers_2024;
+```
+# Visualization
+![image](https://github.com/user-attachments/assets/69fa2feb-5a61-4208-82c8-f6d288278ea5)
+# Dax measures
+```
+Average views per video (M) = 
+VAR Sumoftotalviews=SUM(view_uk_youtubers_2024[total_views])
+VAR sumoftotalvideos=SUM(view_uk_youtubers_2024[total_videos])
+VAR avgviewspervideos=DIVIDE(Sumoftotalviews,sumoftotalvideos,BLANK())
+VAR finalavgviewspervideo=DIVIDE(avgviewspervideos,1000000,BLANK())
+RETURN finalavgviewspervideo
+```
+```
+Subscriber Engagement Rate = 
+VAR sumoftotalsubscribers=SUM(view_uk_youtubers_2024[total_subscribers])
+VAR sumoftotalvideos=SUM(view_uk_youtubers_2024[total_videos])
+VAR subscriberengrate=DIVIDE(sumoftotalsubscribers,sumoftotalvideos,BLANK())
+RETURN subscriberengrate
+```
+```
+Total Subsriber (M) = 
+VAR million = 1000000
+VAR sumofsubscribers = SUM(view_uk_youtubers_2024[total_subscribers])
+VAR totalsubscribers=DIVIDE(sumofsubscribers,million)
+RETURN totalSubscribers
+```
+```
+Total videos = 
+VAR totalvideos=SUM(view_uk_youtubers_2024[total_videos])
+RETURN totalvideos
+```
+```
+Total views(B) = 
+VAR Billion=1000000000
+VAR Sumoftotalviews=SUM(view_uk_youtubers_2024[total_views])
+VAR totalviews=DIVIDE(Sumoftotalviews,Billion)
+RETURN totalviews
+```
+```
+Views per subscriber = 
+VAR sumoftotalviews=SUM(view_uk_youtubers_2024[total_views])
+VAR sumoftotalsubsribers=SUM(view_uk_youtubers_2024[total_subscribers])
+VAR viewspersubscriber=DIVIDE(sumoftotalviews,sumoftotalsubsribers,BLANK())
+RETURN viewspersubscriber
+```
+# Analysis
+Top 3 youtubers based on Subscribers
+Below is a table outlining the constraints on our cleaned dataset:
+| Rank | Channel Name | Total Views (B) |
+|------|-------------|----------------|
+| 1    | DanTDM      | 20.09          |
+| 2    | Dan Rhodes  | 19.13          |
+| 3    | Mister Max  | 16.39          |
+
+| Rank | Channel Name        | Subscribers (M) |
+|------|---------------------|----------------|
+| 1    | NoCopyrightSounds  | 33.90          |
+| 2    | DanTDM            | 29.20          |
+| 3    | Dan Rhodes        | 27.00          |
+
+| Rank | Channel Name            | Total Videos |
+|------|-------------------------|-------------|
+| 1    | Boomerang UK           | 186,339     |
+| 2    | More Emily             | 57,807      |
+| 3    | Sing King              | 43,223      |
+
+| Rank | Channel Name  | Average Views per Video (M) |
+|------|-------------|-----------------------------|
+| 1    | 24 News HD  | 346.37                      |
+| 2    | Slogo       | 62.84                       |
+| 3    | Dua Lipa    | 45.91                       |
+
+| Rank | Channel Name  | Subscriber Engagement Rate |
+|------|-------------|----------------------------|
+| 1    | 24 News HD  | 351,000.00                 |
+| 2    | Slogo       | 111,458.33                 |
+| 3    | Dua Lipa    | 77,922.08                  |
+
+| Rank | Channel Name      | Views per Subscriber |
+|------|------------------|----------------------|
+| 1    | Dumori Bay       | 1,204.72             |
+| 2    | ARPO The Robot   | 1,064.47             |
+| 3    | Awakening Music  | 1,042.62             |
+
+
+
+
+
 
 
 
